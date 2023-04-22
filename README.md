@@ -21,18 +21,18 @@ The operational database tables from G9 Education can be accessed through the Mo
 account. For example, execute the following query:
 select * from MonChild.<table_name>;
 
-Tasks:
+**Tasks:**
 
-[1]. Develop a G9 Education star schema. Identify the fact table, dimensions and attributes required
+1. Develop a G9 Education star schema. Identify the fact table, dimensions and attributes required
 to support the schema. The result of this task is a star schema diagram. If you are using a
 bridge table, make sure to include weight factor and list aggregate attributes.
 You can use any drawing tool, such as Lucidchart, to draw the star schema.
 
-[2]. Validate your star schema using the two-column table methodology. You are required to
+2. Validate your star schema using the two-column table methodology. You are required to
 illustrate the two-column tables for all fact measures and dimensions in your star schema
 design.
 
-[3]. Write the SQL commands to create the fact and dimension tables. You need to create a script
+3. Write the SQL commands to create the fact and dimension tables. You need to create a script
 file containing the appropriate SQL commands to create the fact and dimension tables. Each
 dimension must have an ID or a surrogate key. The operational database tables are accessible
 through the MonChild account.
@@ -40,16 +40,16 @@ through the MonChild account.
 The result of this task is the SQL commands. You will also need to show SQL commands and
 the contents of the tables that you have created.
 
-[4]. Write the SQL commands to answer the following queries, and show the results:
+4. Write the SQL commands to answer the following queries, and show the results:
 
-a) Show the total number of incidents and total incident costs by age group.
+		a) Show the total number of incidents and total incident costs by age group.
 
-b) Show the total number of incidents and total incident costs for the teachers whose roles are
+		b) Show the total number of incidents and total incident costs for the teachers whose roles are
 Early childhood teacher, and show the course they took previously as well.
 
-c) Show the total number of incidents and total incident costs by incident type in March.
+		c) Show the total number of incidents and total incident costs by incident type in March.
 
-d) Show the total number of incidents and total incident costs by daycare center.
+		d) Show the total number of incidents and total incident costs by daycare center.
 
-e) Show all information of the teacher who has the smallest number of incidents
+		e) Show all information of the teacher who has the smallest number of incidents
 
