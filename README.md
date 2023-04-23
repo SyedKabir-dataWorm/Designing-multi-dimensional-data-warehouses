@@ -44,8 +44,7 @@ the contents of the tables that you have created.
 
 		a) Show the total number of incidents and total incident costs by age group.
 
-		b) Show the total number of incidents and total incident costs for the teachers whose roles are
-Early childhood teacher, and show the course they took previously as well.
+		b) Show the total number of incidents and total incident costs for the teachers whose roles are Early 			childhood teacher, and show the course they took previously as well.
 
 		c) Show the total number of incidents and total incident costs by incident type in March.
 
