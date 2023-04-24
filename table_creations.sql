@@ -1,7 +1,6 @@
 
 
 /* Creating all dimesion tables at first */
-
 DROP TABLE coursedim;
 
 DROP TABLE incidentstypedim;
@@ -48,7 +47,6 @@ ALTER TABLE monthdim ADD (
 );
 
 -- Updating MonthDim table
-
 UPDATE monthdim
 SET
     monthid = '1'
@@ -145,7 +143,6 @@ FROM
     daycaredim;
 
 -- Creating AgeGroup Dimension table
-
 CREATE TABLE agegroupdim (
     agegroupid   CHAR(1),
     agegroupdesc VARCHAR2(10)
@@ -362,3 +359,90 @@ ORDER BY
 
 COMMIT;
 -- --------------------------------------------------------------
+/* Two Column Methodology */
+
+-- Validation of IncidentsType Dimension
+SELECT
+    d.type_description as Incident_Type,
+    SUM(i.total_cost)    AS sum_cost,
+    SUM(i.num_incidents) AS sum_incidents
+FROM
+    incidentfact     i,
+    incidentstypedim d
+WHERE
+    d.typeid = i.typeid
+GROUP BY
+    d.type_description;
+
+-- Validation of DayCare Dimension
+
+SELECT
+    dc.centerid,
+    SUM(i.total_cost)    AS sum_cost,
+    SUM(i.num_incidents) AS sum_incidents
+FROM
+    daycaredim        dc,
+    incidentfact      i,
+    monchild.children ch
+WHERE
+        i.centerid = dc.centerid
+    AND ch.centerid = dc.centerid
+GROUP BY
+    dc.centerid;
+
+-- Validation of MonthDim
+
+SELECT
+    m.monthname,
+    SUM(i.total_cost)    AS sum_cost,
+    SUM(i.num_incidents) AS sum_incidents
+FROM
+    monthdim     m,
+    incidentfact i
+WHERE
+    m.monthid = i.monthid
+GROUP BY
+    m.monthname;
+
+-- Valiadation of TeacherDim
+
+SELECT
+    t.teacher_name,
+    SUM(i.total_cost)    AS sum_cost,
+    SUM(i.num_incidents) AS sum_incidents
+FROM
+    teacherdim   t,
+    incidentfact i
+WHERE
+    t.teacherid = i.teacherid
+GROUP BY
+    t.teacher_name; 
+
+-- Valiadation of CourseDim
+
+SELECT
+    c.course_name,
+    SUM(i.total_cost)    AS sum_cost,
+    SUM(i.num_incidents) AS sum_incidents
+FROM
+    coursedim    c,
+    incidentfact i
+WHERE
+    c.courseid = i.courseid
+GROUP BY
+    c.course_name;
+
+-- Valiadation of AgeGroupDim
+SELECT
+    a.agegroupdesc,
+    SUM(i.total_cost)    AS sum_cost,
+    SUM(i.num_incidents) AS sum_incidents
+FROM
+    agegroupdim  a,
+    incidentfact i
+WHERE
+    a.agegroupid = i.agegroupid
+GROUP BY
+    a.agegroupdesc;
+
+-- -------------------------------------------
